@@ -12,15 +12,14 @@ Using [packer.nvim](https://github.com/wbthomason/packer.nvim)
 
 ```lua
 use {
-  'davlord/minitrack.nvim',
+    'davlord/minitrack.nvim',
 }
 ```
 
 Using [lazy.nvim](https://github.com/folke/lazy.nvim)
 
 ```lua
--- init.lua:
-    {
+{
     'davlord/minitrack.nvim
-    }
+}
 ```
