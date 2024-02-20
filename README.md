@@ -33,4 +33,5 @@ require('minitrack').setup()
 
 ### Startup
 From within Neovim startup with `:Minitrack` command.
+
 Or just start Neovim directly with Minitrack `nvim -c ":Minitrack"`.
