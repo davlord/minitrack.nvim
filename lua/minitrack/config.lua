@@ -8,7 +8,7 @@ local fixed_config = {
     report_buffer_name = 'MINITRACK_REPORT',
 }
 local default_user_config = {
-    catchphrase = "make tracking great again",
+    catchphrase = "make time tracking great again",
     keybinds = {
 	insert_current_time = "<C-i>"
     },
