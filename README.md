@@ -37,3 +37,20 @@ require('minitrack').setup()
 From within Neovim startup with `:Minitrack` command.
 
 Or just start Neovim directly with Minitrack `nvim -c ":Minitrack"`.
+
+### Tracking time
+The left pane is used for time tracking and the right pane is the report pane.
+
+### Default keybindings
+
+#### Tracking pane keybindings
+- `Ctrl+i` insert current time (if today)
+  
+#### Report pane keybindings
+- `Ctrl+i` switch to tracing pane and insert current time at last line (if today)
+- `Ctrl+left` go to previous day
+- `Ctrl+right` go to next day
+- `Ctrl+right` go to today
+- `s` toggle sort (by name / by duration)
+- `m` switch between report modes (by default there is only a single report mode)
+- `y` copy report details lines (duration by topic)
