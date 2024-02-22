@@ -65,42 +65,42 @@ function M.open(day, map)
 	vim.api.nvim_buf_set_keymap(
 		report_buffer,
 		"n",
-		"<C-Left>",
+		MinitrackConfig.keybinds.navigate_day_previous,
 		"",
 		{ callback = function() actions.send{ type = "NAVIGATE_DAY", args = "previous" } end }
 	)
 	vim.api.nvim_buf_set_keymap(
 		report_buffer,
 		"n",
-		"<C-Right>",
+		MinitrackConfig.keybinds.navigate_day_next,
 		"",
 		{ callback = function() actions.send{ type = "NAVIGATE_DAY", args = "next" } end }
 	)
 	vim.api.nvim_buf_set_keymap(
 		report_buffer,
 		"n",
-		"<C-Down>",
+		MinitrackConfig.keybinds.navigate_day_today,
 		"",
 		{ callback = function() actions.send{ type = "NAVIGATE_DAY", args = "today" } end }
 	)
 	vim.api.nvim_buf_set_keymap(
 		report_buffer,
 		"n",
-		"m",
+		MinitrackConfig.keybinds.change_report_mode,
 		"",
 		{ callback = cycle_modes }
 	)
 	vim.api.nvim_buf_set_keymap(
 		report_buffer,
 		"n",
-		"s",
+		MinitrackConfig.keybinds.change_report_sort,
 		"",
 		{ callback = toggle_sort }
 	)
 	vim.api.nvim_buf_set_keymap(
 		report_buffer,
 		"n",
-		"y",
+		MinitrackConfig.keybinds.copy_report_details,
 		"",
 		{ callback = yank_details }
 	)

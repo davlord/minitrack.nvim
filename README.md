@@ -54,3 +54,29 @@ The left pane is used for time tracking and the right pane is the report pane.
 - `s` toggle sort (by name / by duration)
 - `m` switch between report modes (by default there is only a single report mode)
 - `y` copy report details lines (duration by topic)
+
+## Configuration
+You can pass options to setup :
+```lua
+require("minitrack").setup{
+	catchphrase = "make time tracking great again",
+	keybinds = {
+		insert_current_time = "<C-i>",
+	        navigate_day_previous = "<C-Left>",
+	        navigate_day_next = "<C-Right>",
+	        navigate_day_today = "<C-Down>",
+	        change_report_mode = "m",
+	        change_report_sort = "s",
+	        copy_report_details = "y",
+	},
+}
+```
+- `catchphrase` Set the catchprase which appears below the title
+- `keybinds` Change keybindings
+  - `insert_current_time` Insert current time keybind from both panes 
+  - `navigate_day_previous` Insert current time keybind from both panes 
+  - `navigate_day_next` Insert current time keybind from both panes 
+  - `navigate_day_today` Insert current time keybind from both panes 
+  - `change_report_mode` Insert current time keybind from both panes 
+  - `change_report_sort` Insert current time keybind from both panes 
+  - `copy_report_details` Insert current time keybind from both panes 
