@@ -54,3 +54,15 @@ The left pane is used for time tracking and the right pane is the report pane.
 - `s` toggle sort (by name / by duration)
 - `m` switch between report modes (by default there is only a single report mode)
 - `y` copy report details lines (duration by topic)
+
+## Configuration
+You can pass options to setup :
+```lua
+catchphrase = "make time tracking great again",
+keybinds = {
+	insert_current_time = "<C-i>"
+},
+```
+- `catchphrase` Set the catchprase which appears below the title
+- `keybinds` Change keybindings
+  - `insert_current_time` Insert current time keybind from both panes 
