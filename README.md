@@ -58,10 +58,12 @@ The left pane is used for time tracking and the right pane is the report pane.
 ## Configuration
 You can pass options to setup :
 ```lua
-catchphrase = "make time tracking great again",
-keybinds = {
-	insert_current_time = "<C-i>"
-},
+require("minitrack").setup{
+	catchphrase = "make time tracking great again",
+	keybinds = {
+		insert_current_time = "<C-i>"
+	},
+}
 ```
 - `catchphrase` Set the catchprase which appears below the title
 - `keybinds` Change keybindings
