@@ -1,3 +1,4 @@
+local extensions = require("minitrack._extensions")
 local util = require("minitrack.util")
 local section = require("minitrack.report.section")
 
@@ -20,12 +21,12 @@ local default_user_config = {
     },
     report_modes = {
 	["standard"] = {
-	    { renderer=section.title },
-	    { renderer=section.day },
+	    { id="title", renderer=section.title },
+	    { id="day", renderer=section.day },
 	    { renderer=section.section_separator },
-	    { renderer=section.details, line_range="details" },
+	    { id="details", renderer=section.details },
 	    { renderer=section.section_separator },
-	    { renderer=section.summary },
+	    { id="summary", renderer=section.summary },
 	}
     },
 }
@@ -34,8 +35,14 @@ MinitrackConfig = MinitrackConfig or {}
 local M = {}
 
 function M.apply(user_config)
+ --    local extensions_config = util.table.merge(
+	-- unpack()
+ --    )
+    local extensions_config = extensions.get_configs()[1]
+
     MinitrackConfig = util.table.merge(
 	default_user_config,
+	extensions_config,
 	user_config or {},
 	fixed_config
     )

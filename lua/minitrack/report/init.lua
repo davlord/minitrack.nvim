@@ -128,8 +128,8 @@ function M.refresh(day, map)
 
     for _,section in ipairs(MinitrackConfig.report_modes[current_mode]) do
 	local line_range = bw:append_lines(section.renderer(day, map))
-	if section.line_range then
-	   line_ranges[section.line_range] = line_range
+	if section.id then
+	   line_ranges[section.id] = line_range
 	end
     end
     vim.api.nvim_buf_set_option(report_buffer, 'modifiable', false)
