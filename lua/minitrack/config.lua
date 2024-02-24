@@ -29,6 +29,7 @@ local default_user_config = {
 	    { id="summary", renderer=section.summary },
 	}
     },
+    report_default_mode = "standard",
 }
 
 MinitrackConfig = MinitrackConfig or {}

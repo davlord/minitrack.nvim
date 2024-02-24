@@ -10,7 +10,14 @@ local memo = {
     map = {},
 }
 local line_ranges = {}
-local current_mode = "standard"
+local current_mode = nil
+
+local function get_current_mode()
+    if not current_mode then
+    	current_mode = MinitrackConfig.report_default_mode
+    end
+    return current_mode
+end
 
 local function refresh_same()
     M.refresh(memo.day, memo.map)
@@ -43,7 +50,7 @@ local function cycle_modes()
             refresh_same()
 	    return
 	end
-	if not pick_next and mode == current_mode then
+	if not pick_next and mode == get_current_mode() then
 		pick_next = true
 	end
     end
@@ -53,10 +60,6 @@ local function cycle_modes()
             refresh_same()
 	    return
     end
-end
-
-function M.get_mode()
-    return current_mode
 end
 
 function M.open(day, map)
@@ -126,7 +129,7 @@ function M.refresh(day, map)
     local bw = BufferWriter:new(report_buffer)
     bw:clear()
 
-    for _,section in ipairs(MinitrackConfig.report_modes[current_mode]) do
+    for _,section in ipairs(MinitrackConfig.report_modes[get_current_mode()]) do
 	local line_range = bw:append_lines(section.renderer(day, map))
 	if section.id then
 	   line_ranges[section.id] = line_range
