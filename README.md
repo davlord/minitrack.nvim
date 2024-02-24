@@ -69,14 +69,16 @@ require("minitrack").setup{
 	        change_report_sort = "s",
 	        copy_report_details = "y",
 	},
+    report_default_mode = "standard",
 }
 ```
 - `catchphrase` Set the catchprase which appears below the title
 - `keybinds` Change keybindings
-  - `insert_current_time` Insert current time keybind from both panes 
-  - `navigate_day_previous` Insert current time keybind from both panes 
-  - `navigate_day_next` Insert current time keybind from both panes 
-  - `navigate_day_today` Insert current time keybind from both panes 
-  - `change_report_mode` Insert current time keybind from both panes 
-  - `change_report_sort` Insert current time keybind from both panes 
-  - `copy_report_details` Insert current time keybind from both panes 
+  - `insert_current_time` Insert current time keybind (from both panes) 
+  - `navigate_day_previous` Go to previous day (from report pane)
+  - `navigate_day_next` Go to next day (from report pane) 
+  - `navigate_day_today` Go to today (from report pane)
+  - `change_report_mode` Switch report mode (from report pane, by default there only one report mode)
+  - `change_report_sort` Switch report details sort by name/duration (from report pane)
+  - `copy_report_details` Copy report details lines into clipboard
+- `report_default_mode` The report mode displayed by default 
