@@ -81,4 +81,4 @@ require("minitrack").setup{
   - `change_report_mode` Switch report mode keybind (from report pane, by default there only one report mode)
   - `change_report_sort` Switch report details sort by name/duration keybind (from report pane)
   - `copy_report_details` Copy report details lines into clipboard keybind (from report pane)
-- `report_default_mode` The report mode displayed by default (from report pane)
+- `report_default_mode` The report mode displayed by default
