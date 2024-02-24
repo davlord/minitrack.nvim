@@ -1,4 +1,4 @@
-local extensions = require("minitrack._extensions")
+local extensions = require("minitrack.extensions")
 local util = require("minitrack.util")
 local section = require("minitrack.report.section")
 
