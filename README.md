@@ -80,5 +80,5 @@ require("minitrack").setup{
   - `navigate_day_today` Go to today (from report pane)
   - `change_report_mode` Switch report mode (from report pane, by default there only one report mode)
   - `change_report_sort` Switch report details sort by name/duration (from report pane)
-  - `copy_report_details` Copy report details lines into clipboard
-- `report_default_mode` The report mode displayed by default 
+  - `copy_report_details` Copy report details lines into clipboard (from report pane)
+- `report_default_mode` The report mode displayed by default (from report pane)
