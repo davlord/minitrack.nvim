@@ -35,10 +35,7 @@ MinitrackConfig = MinitrackConfig or {}
 local M = {}
 
 function M.apply(user_config)
- --    local extensions_config = util.table.merge(
-	-- unpack()
- --    )
-    local extensions_config = extensions.get_configs()[1]
+    local extensions_config = util.table.merge({}, unpack(extensions.get_configs()))
 
     MinitrackConfig = util.table.merge(
 	default_user_config,

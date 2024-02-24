@@ -45,7 +45,7 @@ function M.get_config()
 		{ renderer=section.section_separator },
 		{ id="summary", renderer=expected_duration_summary },
 	    },
-	} 
+	}
     }
 end
 
