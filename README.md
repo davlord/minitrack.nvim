@@ -78,7 +78,7 @@ require("minitrack").setup{
   - `navigate_day_previous` Go to previous day  keybind
   - `navigate_day_next` Go to next day keybindn 
   - `navigate_day_today` Go to today keybind
-  - `change_report_mode` Switch report mode keybind (by default there is only a single report mode)
+  - `change_report_mode` Switch report mode keybind
   - `change_report_sort` Switch report details sort by name/duration keybind
   - `copy_report_details` Copy report details lines into clipboard keybind
 - `report_default_mode` The report mode displayed by default
