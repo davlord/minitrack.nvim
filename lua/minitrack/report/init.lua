@@ -148,10 +148,8 @@ function M.refresh(day, map)
     for _,renderer_name in ipairs(MinitrackConfig.report_modes[get_current_mode()]) do
 	local renderer = M.get_renderer(renderer_name)
 	local line_range = bw:append_lines(renderer(day, map))
-	if section.id then
-	   -- TODO handle multiple use of same renderer on line_ranges (e.g. separator)
-	   line_ranges[renderer_name] = line_range 
-	end
+	-- TODO handle multiple use of same renderer on line_ranges (e.g. separator)
+	line_ranges[renderer_name] = line_range 
     end
     vim.api.nvim_buf_set_option(report_buffer, 'modifiable', false)
 
