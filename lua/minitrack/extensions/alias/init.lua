@@ -1,5 +1,7 @@
 local util = require("minitrack.util")
-local section = require("minitrack.report.section")
+local report = require("minitrack.report")
+
+local original_renderer = nil
 
 local M = {}
 
@@ -27,20 +29,22 @@ end
 
 local function details_unaliased(day, map)
     local unaliased_map = unalias(map)
-    return section.details(day, unaliased_map)
+    return original_renderer(day, unaliased_map)
 end
 
 function M.get_config()
+    original_renderer = report.get_renderer("details")
+    report.set_renderer("details_unaliased", details_unaliased)
     return {
 	aliases = {},
 	report_modes = {
 	    ["unalias"] = {
-		{ id="title", renderer=section.title },
-		{ id="day", renderer=section.day },
-		{ renderer=section.section_separator },
-		{ id="details", renderer=details_unaliased },
-		{ renderer=section.section_separator },
-		{ id="summary", renderer=section.summary },
+		"title",
+		"day",
+		"separator",
+		"details_unaliased",
+		"separator",
+		"summary",
 	    }
 	},
     }

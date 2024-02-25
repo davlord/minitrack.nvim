@@ -1,7 +1,8 @@
-local section = require("minitrack.report.section")
+local report = require("minitrack.report")
 local util = require("minitrack.util")
 
 local M = {}
+local original_renderer = nil
 
 local function expected_duration_summary(day, map)
     local total_duration = 0
@@ -22,7 +23,7 @@ local function expected_duration_summary(day, map)
 	estimated_end = ' (until ' .. os.date('%H:%M', os.time() + remaining_duration * 60) .. ')'
     end
 
-    local r = section.summary(day, map)
+    local r = original_renderer(day, map)
 
     table.insert(r, "remaining: \t" .. util.duration.format(remaining_duration) .. estimated_end)
 
@@ -34,18 +35,10 @@ local function expected_duration_summary(day, map)
 end
 
 function M.get_config()
+    original_renderer = report.get_renderer("summary")
+    report.set_renderer("summary", expected_duration_summary)
     return {
 	expected_duration = 3*60,
-	report_modes = {
-	    ["standard"] = {
-		{ id="title", renderer=section.title },
-		{ id="day", renderer=section.day },
-		{ renderer=section.section_separator },
-		{ id="details", renderer=section.details },
-		{ renderer=section.section_separator },
-		{ id="summary", renderer=expected_duration_summary },
-	    },
-	}
     }
 end
 
