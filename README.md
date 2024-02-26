@@ -149,3 +149,8 @@ require("minitrack").setup{
 Then you can switch between modes using `m` (default keybind)
 
 ![Minitrack report modes](minitrack-report-modes.gif)
+
+### Adding/modifying renderers
+To be able to add or modify report renderers see [extensions](#extensions)
+
+## Extensions
