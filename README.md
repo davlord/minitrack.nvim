@@ -82,3 +82,68 @@ require("minitrack").setup{
   - `change_report_sort` Switch report details sort by name/duration keybind
   - `copy_report_details` Copy report details lines into clipboard keybind
 - `report_default_mode` The report mode displayed by default
+
+## Report customization
+The report is split in mutliple sections. Each section is managed by a specific renderer which is bound to a specific name.
+
+![Minitrack report sections](minitrack-report-sections.png)
+
+1. `title` section renderer
+2. `day` section renderer
+3. `details` section renderer
+4. `summary` section renderer
+
+Blue lines represent a special renderer `separator` which is used multiple times.
+
+The report content can be configured with the following setup options :
+
+```lua
+require("minitrack").setup{
+    report_modes = {
+	["standard"] = {
+	    "title",
+	    "separator",
+	    "day",
+	    "separator",
+	    "details",
+	    "separator",
+	    "summary",
+	}
+    },
+}
+```
+
+So for instance if you want to get rid of the title section you just have to remove the unwanted renderers :
+
+```lua
+require("minitrack").setup{
+    report_modes = {
+	["standard"] = {
+	    "day",
+	    "separator",
+	    "details",
+	    "separator",
+	    "summary",
+	}
+    },
+}
+```
+
+### Report modes
+In the default configuration the only report mode which exists is named "standard". 
+You can add any modes as you which adding more keys in `report_modes` configuration tables.
+
+For example if you want to add a "zen mode" without title and separators :
+```lua
+require("minitrack").setup{
+    report_modes = {
+	["zen"] = {
+	    "day",
+	    "details",
+	    "summary",
+	},
+    },
+}
+```
+Then you can switch between modes using `m` (default keybind)
+![Minitrack report modes](minitrack-report-modes.gif)
