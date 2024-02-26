@@ -84,10 +84,15 @@ require("minitrack").setup{
 - `report_default_mode` The report mode displayed by default
 
 ## Report customization
-The report in split in mutliple sections. Each section is managed by a specific renderer which is bound to a specific name.
+The report is split in mutliple sections. Each section is managed by a specific renderer which is bound to a specific name.
+
 ![Minitrack report sections](minitrack-report-sections.png)
 
 1. `title` section renderer
 2. `day` section renderer
 3. `details` section renderer
 4. `summary` section renderer
+
+Blue lines represent a special renderer `separator` which is used multiple times.
+
+
