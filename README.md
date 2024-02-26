@@ -95,4 +95,36 @@ The report is split in mutliple sections. Each section is managed by a specific 
 
 Blue lines represent a special renderer `separator` which is used multiple times.
 
+The report content can be configured with the following setup options :
 
+```lua
+require("minitrack").setup{
+    report_modes = {
+	["standard"] = {
+	    "title",
+	    "separator",
+	    "day",
+	    "separator",
+	    "details",
+	    "separator",
+	    "summary",
+	}
+    },
+}
+```
+
+So for instance if you wan to get rid of the title section you just have to remove the unwanted renderers :
+
+```lua
+require("minitrack").setup{
+    report_modes = {
+	["standard"] = {
+	    "day",
+	    "separator",
+	    "details",
+	    "separator",
+	    "summary",
+	}
+    },
+}
+```
