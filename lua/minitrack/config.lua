@@ -21,6 +21,7 @@ local default_user_config = {
     report_modes = {
 	["standard"] = {
 	    "title",
+	    "separator",
 	    "day",
 	    "separator",
 	    "details",
