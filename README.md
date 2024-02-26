@@ -113,7 +113,7 @@ require("minitrack").setup{
 }
 ```
 
-So for instance if you wan to get rid of the title section you just have to remove the unwanted renderers :
+So for instance if you want to get rid of the title section you just have to remove the unwanted renderers :
 
 ```lua
 require("minitrack").setup{
@@ -128,3 +128,21 @@ require("minitrack").setup{
     },
 }
 ```
+
+### Report modes
+In the default configuration the only report mode which exists is named "standard". 
+You can add any modes as you which adding more keys in `report_modes` configuration tables.
+
+For example if you want to add a "zen mode" without title and separators :
+```lua
+require("minitrack").setup{
+    report_modes = {
+	["zen"] = {
+	    "day",
+	    "details",
+	    "summary",
+	},
+    },
+}
+```
+Then you can switch between modes using `m` (default keybind)
