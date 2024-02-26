@@ -82,6 +82,7 @@ require("minitrack").setup{
   - `change_report_sort` Switch report details sort by name/duration keybind
   - `copy_report_details` Copy report details lines into clipboard keybind
 - `report_default_mode` The report mode displayed by default
+- `report_modes` See [report modes](#report-modes) for usage
 
 ## Report customization
 The report is split in mutliple sections. Each section is managed by a specific renderer which is bound to a specific name.
