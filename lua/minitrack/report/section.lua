@@ -43,8 +43,6 @@ function M.title(_, _)
     local title = util.table.copy(logo)
     title[#title] = title[#title] .. " v" .. MinitrackConfig.version
     table.insert(title, util.text.padding(MinitrackConfig.catchphrase, logo_max_length))
-    table.insert(title, "")
-    table.insert(title, "")
     return title
 end
 

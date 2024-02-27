@@ -1,10 +1,10 @@
+local extensions = require("minitrack.extensions")
 local util = require("minitrack.util")
-local section = require("minitrack.report.section")
 
 local fixed_config = {
     dir = vim.fn.stdpath("data") .. '/minitrack',
     tracking_file_extension = '.minitrack',
-    version = "0.11",
+    version = "0.12",
     report_buffer_name = 'MINITRACK_REPORT',
 }
 local default_user_config = {
@@ -20,22 +20,27 @@ local default_user_config = {
     },
     report_modes = {
 	["standard"] = {
-	    { renderer=section.title },
-	    { renderer=section.day },
-	    { renderer=section.section_separator },
-	    { renderer=section.details, line_range="details" },
-	    { renderer=section.section_separator },
-	    { renderer=section.summary },
+	    "title",
+	    "separator",
+	    "day",
+	    "separator",
+	    "details",
+	    "separator",
+	    "summary",
 	}
     },
+    report_default_mode = "standard",
 }
 
 MinitrackConfig = MinitrackConfig or {}
 local M = {}
 
 function M.apply(user_config)
+    local extensions_config = util.table.merge({}, unpack(extensions.get_configs()))
+
     MinitrackConfig = util.table.merge(
 	default_user_config,
+	extensions_config,
 	user_config or {},
 	fixed_config
     )

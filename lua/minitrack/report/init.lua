@@ -1,3 +1,4 @@
+local section = require("minitrack.report.section")
 local BufferWriter = require("minitrack.util.buffer_writer")
 local actions = require("minitrack.util.actions")
 
@@ -10,7 +11,21 @@ local memo = {
     map = {},
 }
 local line_ranges = {}
-local current_mode = "standard"
+local current_mode = nil
+local renderers = {
+    ["title"]		= section.title,
+    ["day"]		= section.day,
+    ["details"]		= section.details,
+    ["summary"]		= section.summary,
+    ["separator"]	= section.section_separator,
+}
+
+local function get_current_mode()
+    if not current_mode then
+    	current_mode = MinitrackConfig.report_default_mode
+    end
+    return current_mode
+end
 
 local function refresh_same()
     M.refresh(memo.day, memo.map)
@@ -43,7 +58,7 @@ local function cycle_modes()
             refresh_same()
 	    return
 	end
-	if not pick_next and mode == current_mode then
+	if not pick_next and mode == get_current_mode() then
 		pick_next = true
 	end
     end
@@ -55,8 +70,12 @@ local function cycle_modes()
     end
 end
 
-function M.get_mode()
-    return current_mode
+function M.get_renderer(name)
+    return renderers[name] or error("renderer '".. tostring(name) .."' not found")
+end
+
+function M.set_renderer(name, renderer)
+    renderers[name] = renderer
 end
 
 function M.open(day, map)
@@ -126,11 +145,11 @@ function M.refresh(day, map)
     local bw = BufferWriter:new(report_buffer)
     bw:clear()
 
-    for _,section in ipairs(MinitrackConfig.report_modes[current_mode]) do
-	local line_range = bw:append_lines(section.renderer(day, map))
-	if section.line_range then
-	   line_ranges[section.line_range] = line_range
-	end
+    for _,renderer_name in ipairs(MinitrackConfig.report_modes[get_current_mode()]) do
+	local renderer = M.get_renderer(renderer_name)
+	local line_range = bw:append_lines(renderer(day, map))
+	-- TODO handle multiple use of same renderer on line_ranges (e.g. separator)
+	line_ranges[renderer_name] = line_range 
     end
     vim.api.nvim_buf_set_option(report_buffer, 'modifiable', false)
 
