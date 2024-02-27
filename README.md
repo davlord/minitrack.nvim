@@ -8,6 +8,13 @@ I hate time tracking tools so much I made one. It is meant to be used as a quick
 
 ![Minitrack preview](minitrack.gif)
 
+## Table of content
+- [Installation](#installation)
+- [Usage](#usage)
+- [Configuration](#configuration)
+- [Report customization](#report-customization)
+- [Extensions](#extensions)
+
 ## Installation
 ### Package managers
 
