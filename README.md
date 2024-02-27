@@ -192,3 +192,7 @@ require("minitrack").setup{
 ```
 You should see the report details section unalias when switching report mode.
 ![Minitrack extension unalias](minitrack-extension-unalias.gif)
+
+### Custom extensions
+You can develop your own extensions, have a look at [extensions directory](lua/minitrack/extensions) and use builtin extensions as example.
+
