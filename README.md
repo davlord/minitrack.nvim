@@ -154,3 +154,17 @@ Then you can switch between modes using `m` (default keybind)
 To be able to add or modify report renderers see [extensions](#extensions)
 
 ## Extensions
+To enable an extension just call setup method on it before minitrack setup :
+```lua
+require("minitrack.extensions").setup("some_extension")
+require("minitrack").setup{
+    -- ...
+}
+```
+
+### Builtin extensions
+Minitrack comes with two builtin extensions :
+- `remaining_time` which completes the report summary with information relative to a fixed target amount of tracking per day.
+- `unalias` which add an unalias report mode which displays report details using a mapping between something you typed in the tracking and a real world complete label (e.g. a real ticket number)
+#### remaining_time extension
+
