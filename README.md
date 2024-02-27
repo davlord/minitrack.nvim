@@ -14,6 +14,8 @@ I hate time tracking tools so much I made one. It is meant to be used as a quick
 - [Configuration](#configuration)
 - [Report customization](#report-customization)
 - [Extensions](#extensions)
+  - [Builtin extensions](#builtin-extensions)
+  - [Custom extensions](#custom-extensions)
 
 ## Installation
 ### Package managers
