@@ -194,5 +194,9 @@ You should see the report details section unalias when switching report mode.
 ![Minitrack extension unalias](minitrack-extension-unalias.gif)
 
 ### Custom extensions
-You can develop your own extensions, have a look at [extensions directory](lua/minitrack/extensions) and use builtin extensions as example.
+You can develop your own extensions, with extensions you can :
+- Extends and override minitrack configuration
+- Extends report renderers (Add new renderers or override existing ones)
+
+Have a look at [extensions directory](lua/minitrack/extensions) and use builtin extensions as example.
 
