@@ -178,4 +178,16 @@ require("minitrack").setup{
 ![Minitrack extension remaining time](minitrack-extension-remaining-time.png)
 
 #### unalias extension
-![Minitrack extension unalias](minitrack-extension-unalias.png)
+Enable extension and configure it through `alias` configuration key as the following :
+```lua
+require("minitrack.extensions").setup("unalias")
+require("minitrack").setup{
+      aliases = {
+	["aa "] = "PROJ-AA-",
+	["bb "] = "ANOTHER-PROJ-",
+	["xx"] = "my-worktask-xx",
+    },
+    -- ...
+}
+```
+![Minitrack extension unalias](minitrack-extension-unalias.gif)
