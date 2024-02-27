@@ -165,7 +165,7 @@ require("minitrack").setup{
 ### Builtin extensions
 Minitrack comes with two builtin extensions :
 - `remaining_time` which completes the report summary with information relative to a fixed target amount of tracking per day.
-- `unalias` which add an unalias report mode which displays report details using a mapping between something you typed in the tracking and a real world complete label (e.g. a real ticket number)
+- `unalias` adds an additional report mode which displays report details using a mapping between something you typed in the tracking and a real world complete label (e.g. a real ticket number)
 #### remaining_time extension
 Enable extension and configure it through `expected_duration` configuration key as the following :
 ```lua
@@ -177,3 +177,5 @@ require("minitrack").setup{
 ```
 ![Minitrack extension remaining time](minitrack-extension-remaining-time.png)
 
+#### unalias extension
+![Minitrack extension unalias](minitrack-extension-unalias.png)
