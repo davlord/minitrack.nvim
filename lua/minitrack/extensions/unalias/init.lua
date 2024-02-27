@@ -40,6 +40,7 @@ function M.get_config()
 	report_modes = {
 	    ["unalias"] = {
 		"title",
+		"separator",
 		"day",
 		"separator",
 		"details_unaliased",
