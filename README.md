@@ -190,4 +190,5 @@ require("minitrack").setup{
     -- ...
 }
 ```
+You should see the report details section unalias when switching report mode.
 ![Minitrack extension unalias](minitrack-extension-unalias.gif)
