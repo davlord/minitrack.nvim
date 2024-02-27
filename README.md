@@ -81,6 +81,7 @@ require("minitrack").setup{
   - `change_report_mode` Switch report mode keybind
   - `change_report_sort` Switch report details sort by name/duration keybind
   - `copy_report_details` Copy report details lines into clipboard keybind
+- `report_modes` See [report modes](#report-modes) for usage
 - `report_default_mode` The report mode displayed by default
 
 ## Report customization
@@ -146,4 +147,32 @@ require("minitrack").setup{
 }
 ```
 Then you can switch between modes using `m` (default keybind)
+
 ![Minitrack report modes](minitrack-report-modes.gif)
+
+### Adding/modifying renderers
+To be able to add or modify report renderers see [extensions](#extensions)
+
+## Extensions
+To enable an extension just call setup method on it before minitrack setup :
+```lua
+require("minitrack.extensions").setup("some_extension")
+require("minitrack").setup{
+    -- ...
+}
+```
+
+### Builtin extensions
+Minitrack comes with two builtin extensions :
+- `remaining_time` which completes the report summary with information relative to a fixed target amount of tracking per day.
+- `unalias` which add an unalias report mode which displays report details using a mapping between something you typed in the tracking and a real world complete label (e.g. a real ticket number)
+#### remaining_time extension
+Enable extension and configure it through `expected_duration` configuration key as the following :
+```lua
+require("minitrack.extensions").setup("remaining_time")
+require("minitrack").setup{
+    expected_duration = 7 * 60, -- expects 7 hours of tracking per day
+    -- ...
+}
+```
+
