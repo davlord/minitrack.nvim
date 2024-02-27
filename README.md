@@ -175,4 +175,5 @@ require("minitrack").setup{
     -- ...
 }
 ```
+![Minitrack extension remaining time](minitrack-extension-remaining-time.png)
 
