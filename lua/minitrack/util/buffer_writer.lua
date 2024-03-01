@@ -1,6 +1,6 @@
 local M = {
     buffer = nil,
-    last_written_line = -1
+    last_written_line = 0
 }
 
 function M:new(buffer)
@@ -26,11 +26,11 @@ end
 
 function M:clear()
     self:set_lines_at(0, {})
-    self.last_written_line = -1
+    self.last_written_line = 0
 end
 
 function M:append_lines(lines)
-    if self.last_written_line == -1 then 
+    if self.last_written_line == 0 then
 	return self:set_lines_at(0, lines)
     else
 	return self:set_lines_at(-1, lines)
