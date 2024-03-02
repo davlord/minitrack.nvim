@@ -25,16 +25,22 @@ local function on_realtime_events()
 end
 
 local function init_autocommands()
+	local minirack_group = vim.api.nvim_create_augroup(
+		"MINITRACK",
+		{ clear = true }
+	)
 	vim.api.nvim_create_autocmd({ "BufWritePost" }, {
-		pattern = "*" .. MinitrackConfig.tracking_file_extension,
-		callback = refresh_report
+			group = minitrack_group,
+			pattern = "*" .. MinitrackConfig.tracking_file_extension,
+			callback = refresh_report
 	})
 	vim.api.nvim_create_autocmd({ "CursorHold", "FocusGained", "FocusLost" }, {
-		pattern = {
-			"*" .. MinitrackConfig.tracking_file_extension,
-			MinitrackConfig.report_buffer_name
-		},
-		callback = on_realtime_events
+			group = minitrack_group,
+			pattern = {
+				"*" .. MinitrackConfig.tracking_file_extension,
+				MinitrackConfig.report_buffer_name
+			},
+			callback = on_realtime_events
 	})
 end
 
