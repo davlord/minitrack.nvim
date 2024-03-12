@@ -11,6 +11,7 @@ function M.parse_tracking_line(line)
     if line == nil then return nil end
     local i, _, h, m, topic = line:find(tracking_line_pattern)
     if i == nil then return nil end
+    topic = topic:match'^%s*(.*)%s*$' -- trim spaces
     return {
 	time = to_time(h, m),
 	topic = topic,
