@@ -4,7 +4,7 @@ local util = require("minitrack.util")
 local fixed_config = {
     dir = vim.fn.stdpath("data") .. '/minitrack',
     tracking_file_extension = '.minitrack',
-    version = "0.14",
+    version = "0.15",
     report_buffer_name = 'MINITRACK_REPORT',
 }
 local default_user_config = {
