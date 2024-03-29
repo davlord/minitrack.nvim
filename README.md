@@ -206,12 +206,9 @@ You should see the report details section unalias when switching report mode.
 This extension allows to name a specific topic which time will be reallocated across other topics.
 For example :
 ```
-1:00 a
-1:00 _ (reallocated topic)
+1:00 a                             1:30 a
+1:00 _ (reallocated topic) =====>  1:30 b
 1:00 b
-// Turns into :
-1:30 a
-1:30 b
 ```
 
 Enable extension and configure it through `topic_to_reallocate` configuration key as the following :
