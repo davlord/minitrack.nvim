@@ -221,6 +221,7 @@ require("minitrack").setup{
     topic_to_reallocate = "_", -- name of the reallocated topic
     -- ...
 }
+```
 
 ### Custom extensions
 You can develop your own extensions, with extensions you can :
