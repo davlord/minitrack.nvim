@@ -202,6 +202,26 @@ require("minitrack").setup{
 You should see the report details section unalias when switching report mode.
 ![Minitrack extension unalias](minitrack-extension-unalias.gif)
 
+#### reallocate extension
+This extension allows to name a specific topic which time will be reallocated across other topics.
+For example :
+```
+1:00 a
+1:00 _ (reallocated topic)
+1:00 b
+// Turns into :
+1:30 a
+1:30 b
+```
+
+Enable extension and configure it through `topic_to_reallocate` configuration key as the following :
+```lua
+require("minitrack.extensions").setup("reallocate")
+require("minitrack").setup{
+    topic_to_reallocate = "_", -- name of the reallocated topic
+    -- ...
+}
+
 ### Custom extensions
 You can develop your own extensions, with extensions you can :
 - Extends and override minitrack configuration
