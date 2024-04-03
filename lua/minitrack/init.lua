@@ -25,7 +25,7 @@ local function on_realtime_events()
 end
 
 local function init_autocommands()
-	local minirack_group = vim.api.nvim_create_augroup(
+	local minitrack_group = vim.api.nvim_create_augroup(
 		"MINITRACK",
 		{ clear = true }
 	)
