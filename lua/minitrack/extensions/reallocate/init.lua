@@ -1,10 +1,9 @@
-local report = require("minitrack.report")
+local parser = require("minitrack.tracking.parser")
 local util = require("minitrack.util")
 
 local M = {}
-local original_renderer = nil
 
-local function reallocate_details(day, map)
+local function reallocate_details(map)
     local new_map = {}
     local total_duration = 0;
     local duration_to_reallocate = 0;
@@ -29,12 +28,11 @@ local function reallocate_details(day, map)
 	end
     end
 
-    return original_renderer(day, new_map);
+    return new_map
 end
 
 function M.get_config()
-    original_renderer = report.get_renderer("details")
-    report.set_renderer("details", reallocate_details)
+    parser.register_parsed_tracking_converter(reallocate_details)
     return {
 	topic_to_reallocate = "_",
     }

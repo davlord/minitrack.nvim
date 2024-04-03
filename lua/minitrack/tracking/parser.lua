@@ -3,8 +3,15 @@ local tracking_line_pattern = "([012]?%d):(%d%d)%s?(.*)"
 
 local M = {}
 
+local parsed_tracking_converters = {
+}
+
 local function to_time(h, m)
     return h * 60 + m
+end
+
+function M.register_parsed_tracking_converter(converter)
+    table.insert(parsed_tracking_converters, converter)
 end
 
 function M.parse_tracking_line(line)
@@ -84,6 +91,10 @@ function M.parse_tracking_lines(raw_lines, stop_at_current_time)
 	    topic = topic,
 	    duration = duration
 	})
+    end
+
+    for _, parsed_tracking_converter in ipairs(parsed_tracking_converters) do
+	tracking_parsed = parsed_tracking_converter(tracking_parsed)
     end
 
     return tracking_parsed
