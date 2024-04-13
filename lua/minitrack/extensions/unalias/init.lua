@@ -1,3 +1,4 @@
+require("minitrack.util.debug")
 local util = require("minitrack.util")
 local report = require("minitrack.report")
 
@@ -5,8 +6,12 @@ local original_renderer = nil
 
 local M = {}
 
+local function sort_by_text_length_desc(a, b)
+    return string.len(b) - string.len(a)
+end
+
 local function unalias_topic(topic)
-    local sorted_aliases = util.table.keys_sorted_reverse(MinitrackConfig.aliases)
+    local sorted_aliases = util.table.keys_sort_by(MinitrackConfig.aliases, sort_by_text_length_desc)
     for _, from in ipairs(sorted_aliases) do
 	if string.find(topic, from, 1, true) then
 	    local to = MinitrackConfig.aliases[from]
