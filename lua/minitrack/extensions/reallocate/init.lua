@@ -5,15 +5,19 @@ local M = {}
 
 local function reallocate_details(map)
     local new_map = {}
-    local total_duration = 0;
+    local total_duration_without_reallocate = 0;
     local duration_to_reallocate = 0;
     for _, report_line in ipairs(map) do
 	if report_line.topic == MinitrackConfig.topic_to_reallocate then
 	    duration_to_reallocate = duration_to_reallocate + report_line.duration
 	else
 	    table.insert(new_map, util.table.copy(report_line))
+	    total_duration_without_reallocate = total_duration_without_reallocate + report_line.duration
 	end
-	total_duration = total_duration + report_line.duration
+    end
+
+    if duration_to_reallocate == 0 then
+    	return map
     end
 
     local remaining_duration_to_reallocate = duration_to_reallocate
@@ -22,7 +26,7 @@ local function reallocate_details(map)
 	    report_line.duration = report_line.duration + remaining_duration_to_reallocate
 	    remaining_duration_to_reallocate = 0
 	else
-	    local duration_to_add = math.ceil(duration_to_reallocate * report_line.duration / total_duration + 0.5)
+	    local duration_to_add = math.ceil(duration_to_reallocate * report_line.duration / total_duration_without_reallocate - 0.5)
 	    report_line.duration = report_line.duration + duration_to_add
 	    remaining_duration_to_reallocate = remaining_duration_to_reallocate - duration_to_add
 	end
