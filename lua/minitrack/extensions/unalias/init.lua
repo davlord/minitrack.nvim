@@ -1,4 +1,3 @@
-require("minitrack.util.debug")
 local util = require("minitrack.util")
 local report = require("minitrack.report")
 
