@@ -6,7 +6,7 @@ local original_renderer = nil
 local M = {}
 
 local function sort_by_text_length_desc(a, b)
-    return string.len(b) - string.len(a)
+    return string.len(b) > string.len(a)
 end
 
 local function unalias_topic(topic)
