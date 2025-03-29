@@ -17,6 +17,7 @@ local function insert_current_time_normal_mode()
 	if current_time:sub(1,1) == "0" then
 		current_time = current_time:sub(2)
 	end
+	vim.fn.feedkeys("G")
 	if parser.parse_tracking_line(line) then
 		vim.fn.feedkeys("o")
 	else
@@ -71,7 +72,6 @@ end
 local function on_action(action)
     if action.type == "APPEND_NEW_TRACKING_LINE" then
 	vim.api.nvim_set_current_win(tracking_window)
-	vim.fn.feedkeys("G")
 	insert_current_time_normal_mode()
     end
 end
