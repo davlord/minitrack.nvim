@@ -14,8 +14,8 @@ function M.format(duration)
     return string.format('%2d', h) .. ":" .. string.format("%02d", m)
 end
 
-function M.round(duration, round_in_minutes)
-    return math.floor((duration / 5) + 0.5) * 5
+function M.round(duration, step)
+    return math.floor((duration / step) + 0.5) * step
 end
 
 return M
