@@ -37,8 +37,10 @@ local function toggle_sort()
 end
 
 local function yank_details()
-    local range = line_ranges["details"]
-    vim.cmd( range.from .. ',' .. range.to .. 'y')
+    local range = line_ranges[MinitrackConfig.yank_modes[get_current_mode()]]
+    if (range ~= nil and range.from <= range.to) then
+	vim.cmd( range.from .. ',' .. range.to .. 'y')
+    end
 end
 
 local function sort_by_topic(a, b)
@@ -135,6 +137,7 @@ function M.open(day, map)
 end
 
 function M.refresh(day, map)
+    line_ranges = {}
     local sort_fn = sort_by_duration_desc
     if not sort_duration then
     	sort_fn = sort_by_topic
@@ -149,7 +152,7 @@ function M.refresh(day, map)
 	local renderer = M.get_renderer(renderer_name)
 	local line_range = bw:append_lines(renderer(day, map))
 	-- TODO handle multiple use of same renderer on line_ranges (e.g. separator)
-	line_ranges[renderer_name] = line_range 
+	line_ranges[renderer_name] = line_range
     end
     vim.api.nvim_buf_set_option(report_buffer, 'modifiable', false)
 

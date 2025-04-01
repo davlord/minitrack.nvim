@@ -30,6 +30,9 @@ local default_user_config = {
 	}
     },
     report_default_mode = "standard",
+    yank_modes = {
+	["standard"] = "details",
+    }
 }
 
 MinitrackConfig = MinitrackConfig or {}
