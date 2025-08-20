@@ -24,6 +24,10 @@ local function on_realtime_events()
 	end
 end
 
+local function split_resize() 
+    vim.api.nvim_command('wincmd = | vertical resize ' .. math.floor(vim.o.columns * 0.5))
+end
+
 local function init_autocommands()
 	local minitrack_group = vim.api.nvim_create_augroup(
 		"MINITRACK",
@@ -41,6 +45,14 @@ local function init_autocommands()
 				MinitrackConfig.report_buffer_name
 			},
 			callback = on_realtime_events
+	})
+	vim.api.nvim_create_autocmd({'VimResized'}, {
+	    group = minitrack_group,
+	    pattern = {
+		    "*" .. MinitrackConfig.tracking_file_extension,
+		    MinitrackConfig.report_buffer_name
+	    },
+	    callback = split_resize
 	})
 end
 
